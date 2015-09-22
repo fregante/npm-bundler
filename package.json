@@ -1,6 +1,6 @@
 {
   "name": "bfred-npm-bundler",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Browserify, babelify, minify node modules. For my own modules, but maybe you can find it useful too.",
   "license": "MIT",
   "repository": "bfred-it/bfred-npm-bundler",
