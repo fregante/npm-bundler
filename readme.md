@@ -18,7 +18,7 @@ Add to your module's `package.json`:
 }
 ```
 
-where `doSomething` is the global variable name of the module (camelCase) and `do-something` is the module name on npm.
+where `doSomething` is the global variable name of the module (camelCase) and `do-something` is the module name on npm. Use the `*-self-contained` versions if you don't need a global.
 
 ## Files
 
