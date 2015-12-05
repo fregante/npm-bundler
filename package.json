@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "Browserify, babelify, minify node modules. For my own modules, but maybe you can find it useful too.",
   "license": "MIT",
-  "repository": "bfred-it/bfred-npm-bundler",
+  "repository": "bfred-it/npm-bundler",
   "author": {
     "name": "Federico Brigante",
     "email": "bfred-it@users.noreply.github.com",
