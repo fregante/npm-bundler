@@ -25,8 +25,7 @@ where `doSomething` is the global variable name of the module (camelCase) and `d
 Here's an explanation of the files that this generates (the ones in `dist/`)
 
 * `index.js`: source file, in ES6, the input
-* `dist/do-something.js`: browser-ready file with AMD or a global variable called `doSomething`
-* `dist/do-something.min.js`: same as above, minified
+* `dist/do-something.min.js`: browser-ready file with AMD or a global variable called `doSomething`
 * `dist/do-something.node.js`: used by node/browserify with `require('do-something')`
 * `dist/do-something.node.min.js`: same as above, but minified, for byte counting only
 

@@ -1,5 +1,9 @@
 #!/bin/bash
-current="$(dirname "$(which "$0")")"
-export PATH=$current/../node_modules/.bin:$PATH
+# Wrap module in a ES5 bundle without exports/globals
 
-browserify $1 -t babelify | tee dist/$2.js
+moduleDir=$PWD
+tasksDir=$PWD/${0%/*}
+
+mkdir -p dist
+cd $tasksDir
+rollup -c --format iife ${moduleDir}/$1 | babel

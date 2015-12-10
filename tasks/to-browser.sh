@@ -1,5 +1,9 @@
 #!/bin/bash
-current="$(dirname "$(which "$0")")"
-export PATH=$current/../node_modules/.bin:$PATH
+# Wrap module in a UMD ES5 bundle
 
-browserify $1 -t babelify --standalone $2 | tee dist/$3.js
+moduleDir=$PWD
+tasksDir=$PWD/${0%/*}
+
+mkdir -p dist
+cd $tasksDir
+rollup -c --format umd --name $2 ${moduleDir}/$1 | babel

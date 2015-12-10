@@ -1,5 +1,8 @@
 #!/bin/bash
-current="$(dirname "$(which "$0")")"
-export PATH=$current/../node_modules/.bin:$PATH
+# Convert module to ES5 for node/browserify usage
 
-babel $1 | tee dist/$2.node.js
+infile=$1 # index.js
+outfile=$2 # do-something
+
+mkdir -p dist
+rollup --format cjs $infile | babel --presets es2015-rollup | tee dist/${outfile}.node.js
