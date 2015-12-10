@@ -13,8 +13,7 @@ Add to your module's `package.json`:
 ```json
 "scripts": {
   "build": "./node_modules/bfred-npm-bundler/tasks/all.sh index.js doSomething do-something",
-  "to-npm": "./node_modules/bfred-npm-bundler/tasks/to-npm.sh index.js do-something",
-  "prepublish": "npm run to-npm"
+  "prepublish": "./node_modules/bfred-npm-bundler/tasks/to-node.sh index.js do-something"
 }
 ```
 
