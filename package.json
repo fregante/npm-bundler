@@ -1,6 +1,13 @@
+// situation:
+// 1) using .sh files is a total mess and lacks windows support
+// but who cares, this is is a personal tool
+//
+//
+// 2) babel and rollup presets depend on the user code and should thus be defined by the user
+// but who cares, I'm the user and if I need anything I change the bundler
 {
   "name": "bfred-npm-bundler",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Browserify, babelify, minify node modules. For my own modules, but maybe you can find it useful too.",
   "license": "MIT",
   "repository": "bfred-it/npm-bundler",
@@ -9,6 +16,11 @@
     "email": "bfred-it@users.noreply.github.com",
     "url": "twitter.com/bfred_it"
   },
+  "bin": {
+    "bundler-build": "run.js",
+    "bundler-build-for-node": "run.js"
+  },
+  "bin-comments": "http://blog.npmjs.org/post/118810260230/building-a-simple-command-line-tool-with-npm",
   "keywords": [],
   "files": [
     "tasks/*"
