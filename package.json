@@ -1,16 +1,18 @@
-
 {
   "name": "bfred-npm-bundler",
-  "version": "4.0.0",
-  "description": "(Deprecated) Browserify, babelify, minify node modules. For my own modules, but maybe you can find it useful too.",
+  "version": "5.0.0",
+  "description": "Opinionated ES6 library bundler based on rollup-babel-lib-bundler. For my own modules, but maybe you can find it useful too.",
   "license": "MIT",
   "repository": "bfred-it/npm-bundler",
-  "author": {
-    "name": "Federico Brigante",
-    "email": "bfred-it@users.noreply.github.com",
-    "url": "twitter.com/bfred_it"
+  "author": "Federico Brigante <bfred-it@users.noreply.github.com> (twitter.com/bfred_it)",
+  "bin": "build.sh",
+  "files": [ "build.sh" ],
+  "dependencies": {
+    "rollup-babel-lib-bundler": "^2.3.6",
+    "uglify-js": "^2.6.2"
   },
-  "files": [
-    "readme.md"
-  ]
+  "bugs": {
+    "url": "https://github.com/bfred-it/npm-bundler/issues"
+  },
+  "homepage": "https://github.com/bfred-it/npm-bundler#readme"
 }
