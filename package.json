@@ -8,7 +8,7 @@
   "bin": "build.sh",
   "files": [ "build.sh" ],
   "dependencies": {
-    "rollup-babel-lib-bundler": "^2.3.6",
+    "rollup-babel-lib-bundler": "^2.4.0",
     "uglify-js": "^2.6.2"
   },
   "bugs": {

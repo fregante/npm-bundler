@@ -7,10 +7,10 @@ The difference with [rollup-babel-lib-bundler](https://github.com/frostney/rollu
 * **dist/[lib-name].browser.js**  
 	A minified file for the browser with a global called `[libName]`
 * **dist/[lib-name].common-js.js**  
-	A file to be used with browserify or similar. Set it up with:
+	A file to be used with browserify or similar. Set it up with:  
 	`"main": "dist/[lib-name].common-js.js",` in package.json
 * **dist/[lib-name].es-modules.js**  
-	A file to be used with ESM-aware bundlers like rollup. Set it up with:
+	A file to be used with ESM-aware bundlers like rollup. Set it up with:  
 	`"jsnext:main": "dist/[lib-name].es-modules.js",` in package.json
 
 ## Usage
