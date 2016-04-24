@@ -44,3 +44,7 @@ Add the references to the generated files, the babel config, and the build step 
 If your lib only makes sense inside node/browserify, you can skip the `browser` file creation by not passing the second argument:
 
 `bfred-npm-bundler lib-name` instead of `bfred-npm-bundler lib-name libName`
+
+## Byte-counting
+
+The `browser` file is useful to be used for byte-counting via [`gzip-size-cli`](https://github.com/sindresorhus/gzip-size-cli) or with [badges.](https://github.com/exogen/badge-matrix#file-size-badges-for-any-file-on-github-or-npm) If your package is _node-only,_ you can pass the option `--byte-count` and a **dist/[lib-name].byte-count.js** file will be created.

@@ -13,6 +13,11 @@ cjs_name=.common-js
 es6_name=.es-modules
 iife_name=.browser
 
+if [[ $global_var = '--byte-count' ]]; then
+	global_var=bytes
+	iife_name=.byte-count
+fi
+
 if [[ $global_var ]]; then
 	# with IIFE
 	rollup-babel-lib-bundler \
