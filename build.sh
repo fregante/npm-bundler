@@ -18,27 +18,39 @@ if [[ $global_var = '--byte-count' ]]; then
 	iife_name=.byte-count
 fi
 
+function realpath {
+	local r=$1
+	local t=$(readlink "$r")
+	while [ "$t" ]; do
+		r=$(cd "$(dirname "$r")" && cd "$(dirname "$t")" && pwd -P)/"$(basename "$t")"
+		t=$(readlink "$r")
+	done
+	echo "$r"
+}
+
+node_modules=$(dirname "$(realpath "$0")")/node_modules
+
+echo $node_modules
+
+mkdir -p dist
+
+rollup \
+	--config "$node_modules"/rollup-config-buble/index.js \
+	--format es6 \
+	--input index.js \
+	--output dist/"$output_filename""$es6_name".js
+
+rollup \
+	--config "$node_modules"/rollup-config-buble/index.js \
+	--format cjs \
+	--input index.js \
+	--output dist/"$output_filename""$cjs_name".js
+
 if [[ $global_var ]]; then
 	# with IIFE
-	rollup-babel-lib-bundler \
-		--lib-name "$output_filename" \
-		--module-name "$global_var" \
-		--format cjs,es6,iife \
-		--postfix cjs:"$cjs_name",es6:"$es6_name" \
-		--dest dist index.js
-
-	# only mangle names inside the IIFE
-	uglifyjs \
-		--mangle -- \
-		dist/"$output_filename".iife.js > dist/"$output_filename""$iife_name".js
-
-	# delete the non-minified version
-	rm dist/"$output_filename".iife.js
-else
-	# no IIFE
-	rollup-babel-lib-bundler \
-		--lib-name "$output_filename" \
-		--format cjs,es6 \
-		--postfix cjs:"$cjs_name",es6:"$es6_name" \
-		--dest dist index.js
+	rollup \
+		--config "$node_modules"/rollup-config-es6-browser/index.js \
+		--name "$global_var" \
+		--input index.js \
+		--output dist/"$output_filename""$iife_name".js
 fi

@@ -1,8 +1,10 @@
 # bfred-npm-bundler 
 
-> Opinionated ES6 library bundler based on [rollup-babel-lib-bundler](https://github.com/frostney/rollup-babel-lib-bundler). For my own modules, but maybe you can find it useful too.
+> Opinionated ES6 library bundler based on [rollup-babel-lib-bundler](https://github.com/frostney/rollup-babel-lib-bundler). 
 
-The difference with [rollup-babel-lib-bundler](https://github.com/frostney/rollup-babel-lib-bundler) is that this is already configured for the output of the following files:
+It's for my own modules, but maybe you can find it useful too. It changes often (but follows semver). Unannounced PRs generally not welcome, but feel free to open issues to discuss first.
+
+It outputs the following files:
 
 * **dist/[lib-name].browser.js**  
 	A minified file for the browser with a global called `[libName]`
@@ -15,23 +17,18 @@ The difference with [rollup-babel-lib-bundler](https://github.com/frostney/rollu
 
 ## Usage
 
-Install it in your project together with a [rollup-compatible babel preset](https://github.com/rollup/rollup-plugin-babel#configuring-babel):
+Install it in your project:
 
 ```sh
-npm install --save-dev bfred-npm-bundler babel-preset-es2015-rollup
+npm install --save-dev bfred-npm-bundler 
 ```
 
-Add the references to the generated files, the babel config, and the build step in your `package.json`:
+Add the references to the generated files and the build step in your `package.json`:
 
 ```json
 {
 	"main": "dist/lib-name.common-js.js",
 	"jsnext:main": "dist/lib-name.es-modules.js",
-	"babel": {
-		"presets": [
-			"es2015-rollup"
-		]
-	},
 	"scripts": {
 		"build": "bfred-npm-bundler lib-name libName",
 		"prepublish": "npm run build"
@@ -48,3 +45,11 @@ If your lib only makes sense inside node/browserify, you can skip the `browser` 
 ## Byte-counting
 
 The `browser` file is useful to be used for byte-counting via [`gzip-size-cli`](https://github.com/sindresorhus/gzip-size-cli) or with [badges.](https://github.com/exogen/badge-matrix#file-size-badges-for-any-file-on-github-or-npm) If your package is _node-only,_ you can pass the option `--byte-count` and a **dist/[lib-name].byte-count.js** file will be created.
+
+## Alternatives
+
+[rollup-babel-lib-bundler](https://github.com/frostney/rollup-babel-lib-bundler) is more configurable
+
+## License
+
+MIT © [Federico Brigante](http://twitter.com/bfred_it)
