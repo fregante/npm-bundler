@@ -1,6 +1,6 @@
 {
   "name": "bfred-npm-bundler",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Opinionated ES6 library bundler based on rollup and buble",
   "license": "MIT",
   "repository": "bfred-it/npm-bundler",
