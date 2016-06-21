@@ -1,6 +1,6 @@
 # bfred-npm-bundler 
 
-> Opinionated ES6 library bundler based on [rollup-babel-lib-bundler](https://github.com/frostney/rollup-babel-lib-bundler). 
+> Opinionated ES6 library bundler based on [rollup](https://github.com/rollup/rollup) and [buble](https://gitlab.com/Rich-Harris/buble)
 
 It's for my own modules, but maybe you can find it useful too. It changes often (but follows semver). Unannounced PRs generally not welcome, but feel free to open issues to discuss first.
 
