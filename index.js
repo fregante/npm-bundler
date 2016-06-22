@@ -3,6 +3,7 @@
 const rollup = require('rollup').rollup;
 const buble = require('rollup-plugin-buble');
 const uglify = require('rollup-plugin-uglify');
+const requireExternals = require('rollup-plugin-node-resolve');
 const filesize = require('rollup-plugin-filesize');
 
 const outputFilename = process.argv[2];
@@ -46,6 +47,10 @@ if (globalVarName) {
 		plugins: [
 			buble(),
 			uglify(),
+			requireExternals({
+				browser: true,
+				jsnext: true
+			}),
 			filesize()
 		]
 	}).then(bundle =>
