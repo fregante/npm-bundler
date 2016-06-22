@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 const rollup = require('rollup').rollup;
 const buble = require('rollup-plugin-buble');
 const uglify = require('rollup-plugin-uglify');
