@@ -57,7 +57,7 @@ if (globalVarName) {
 				browser: true,
 				jsnext: true
 			}),
-			uglify(isByteCountingOnly ? {
+			uglify(isByteCountingOnly ? {} : {
 				output: {
 					comments: (node, comment) => {
 						if (comment.type === 'comment2') {
@@ -65,7 +65,7 @@ if (globalVarName) {
 						}
 					}
 				}
-			} : {}),
+			}),
 			filesize()
 		]
 	}).then(bundle =>
