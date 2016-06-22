@@ -4,8 +4,6 @@ const rollup = require('rollup').rollup;
 const buble = require('rollup-plugin-buble');
 const uglify = require('rollup-plugin-uglify');
 
-require('loud-rejection')();
-
 const outputFilename = process.argv[2];
 let globalVarName = process.argv[3];
 
@@ -28,16 +26,16 @@ rollup({
 	plugins: [
 		buble()
 	]
-}).then(bundle => {
+}).then(bundle => Promise.all([
 	bundle.write({
 		format: 'cjs',
 		dest: cjsName
-	}).then(() => console.log('•', cjsName));
+	}).then(() => console.log('•', cjsName)),
 	bundle.write({
 		format: 'es',
 		dest: esName
-	}).then(() => console.log('•', esName));
-});
+	}).then(() => console.log('•', esName))
+])).catch(err => console.log(err));
 if (globalVarName) {
 	rollup({
 		entry: 'index.js',
@@ -45,11 +43,11 @@ if (globalVarName) {
 			buble(),
 			uglify()
 		]
-	}).then(bundle => {
+	}).then(bundle =>
 		bundle.write({
 			format: 'iife',
 			moduleName: globalVarName,
 			dest: iifeName
-		}).then(() => console.log('•', iifeName));
-	});
+		}).then(() => console.log('•', iifeName))
+	).catch(err => console.log(err));
 }
