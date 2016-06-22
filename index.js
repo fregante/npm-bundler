@@ -3,6 +3,7 @@
 const rollup = require('rollup').rollup;
 const buble = require('rollup-plugin-buble');
 const uglify = require('rollup-plugin-uglify');
+const filesize = require('rollup-plugin-filesize');
 
 const outputFilename = process.argv[2];
 let globalVarName = process.argv[3];
@@ -20,7 +21,9 @@ cjsName = `dist/${outputFilename}.${cjsName}.js`;
 esName = `dist/${outputFilename}.${esName}.js`;
 iifeName = `dist/${outputFilename}.${iifeName}.js`;
 
-console.log('Files built:');
+console.log('Building:');
+console.log('•', cjsName);
+console.log('•', esName);
 rollup({
 	entry: 'index.js',
 	plugins: [
@@ -30,24 +33,26 @@ rollup({
 	bundle.write({
 		format: 'cjs',
 		dest: cjsName
-	}).then(() => console.log('•', cjsName)),
+	}),
 	bundle.write({
 		format: 'es',
 		dest: esName
-	}).then(() => console.log('•', esName))
+	})
 ])).catch(err => console.log(err));
 if (globalVarName) {
+	console.log('•', iifeName);
 	rollup({
 		entry: 'index.js',
 		plugins: [
 			buble(),
-			uglify()
+			uglify(),
+			filesize()
 		]
 	}).then(bundle =>
 		bundle.write({
 			format: 'iife',
 			moduleName: globalVarName,
 			dest: iifeName
-		}).then(() => console.log('•', iifeName))
+		})
 	).catch(err => console.log(err));
 }
