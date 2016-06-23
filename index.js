@@ -66,7 +66,11 @@ if (globalVarName) {
 					}
 				}
 			}),
-			filesize()
+			filesize({
+				format: {
+					exponent: 0
+				}
+			})
 		]
 	}).then(bundle =>
 		bundle.write({
