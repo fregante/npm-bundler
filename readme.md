@@ -28,6 +28,7 @@ Add the references to the generated files and the build step in your `package.js
 ```json
 {
 	"main": "dist/lib-name.common-js.js",
+	"module": "dist/lib-name.es-modules.js",
 	"jsnext:main": "dist/lib-name.es-modules.js",
 	"scripts": {
 		"build": "bfred-npm-bundler lib-name libName",
