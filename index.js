@@ -24,6 +24,16 @@ if (isByteCountingOnly) {
 	minName = 'dist/size-measuring-only';
 }
 
+const preserveBanner = isByteCountingOnly ? {} : {
+	output: {
+		comments(node, comment) {
+			if (comment.type === 'comment2') {
+				return comment.value[0] === '!';
+			}
+		}
+	}
+};
+
 console.log('Building:');
 if (globalVarName) {
 	console.log('•', iifeName);
@@ -54,7 +64,7 @@ if (globalVarName) {
 				browser: true,
 				jsnext: true
 			}),
-			uglify(),
+			uglify(preserveBanner),
 			filesize({
 				format: {
 					exponent: 0
