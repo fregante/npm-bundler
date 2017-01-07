@@ -10,11 +10,11 @@
     "index.js"
   ],
   "dependencies": {
-    "rollup": "^0.32.0",
-    "rollup-plugin-buble": "^0.11.0",
-    "rollup-plugin-filesize": "^0.4.4",
-    "rollup-plugin-node-resolve": "^1.7.0",
-    "rollup-plugin-uglify": "^1.0.0"
+    "rollup": "^0.41.1",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-filesize": "^1.0.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1"
   },
   "bugs": {
     "url": "https://github.com/bfred-it/npm-bundler/issues"
