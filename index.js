@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 'use strict';
-const path = require('path');
 const rollup = require('rollup').rollup;
 const buble = require('rollup-plugin-buble');
 const uglify = require('rollup-plugin-uglify');
 const requireExternals = require('rollup-plugin-node-resolve');
 const filesize = require('rollup-plugin-filesize');
+const readPkg = require('read-pkg').sync;
 
-const packageInfo = require(path.resolve('./package.json'));
+const packageInfo = readPkg();
 const banner = `/*! npm.im/${packageInfo.name} */`;
 
 const outputFilename = process.argv[2];
