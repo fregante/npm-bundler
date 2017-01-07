@@ -4,7 +4,7 @@
   "description": "Opinionated ES6 library bundler based on rollup and buble",
   "license": "MIT",
   "repository": "bfred-it/npm-bundler",
-  "author": "Federico Brigante <bfred-it@users.noreply.github.com> (twitter.com/bfred_it)",
+  "author": "Federico Brigante <github@bfred.it> (bfred.it)",
   "bin": "index.js",
   "scripts": {
     "test": "xo"
