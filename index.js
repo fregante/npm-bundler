@@ -13,21 +13,64 @@ const banner = `/*! npm.im/${packageInfo.name} */`;
 const outputFilename = process.argv[2];
 let globalVarName = process.argv[3];
 
-let cjsName = 'common-js';
-let esName = 'es-modules';
-let iifeName = 'browser';
+const iifeName = `dist/${outputFilename}.js`;
+const cjsName = `dist/${outputFilename}.common-js.js`;
+const esName = `dist/${outputFilename}.es-modules.js`;
+let minName = `dist/${outputFilename}.min.js`;
 
 const isByteCountingOnly = globalVarName === '--byte-count';
 if (isByteCountingOnly) {
 	globalVarName = 'bytes';
-	iifeName = 'byte-count';
+	minName = 'dist/size-measuring-only';
 }
 
-cjsName = `dist/${outputFilename}.${cjsName}.js`;
-esName = `dist/${outputFilename}.${esName}.js`;
-iifeName = `dist/${outputFilename}.${iifeName}.js`;
-
 console.log('Building:');
+if (globalVarName) {
+	console.log('•', iifeName);
+	rollup({
+		entry: 'index.js',
+		plugins: [
+			buble(),
+			requireExternals({
+				browser: true,
+				jsnext: true
+			})
+		]
+	}).then(bundle =>
+		bundle.write({
+			format: 'iife',
+			moduleName: globalVarName,
+			dest: iifeName,
+			banner
+		})
+	).catch(console.error);
+
+	console.log('•', minName);
+	rollup({
+		entry: 'index.js',
+		plugins: [
+			buble(),
+			requireExternals({
+				browser: true,
+				jsnext: true
+			}),
+			uglify(),
+			filesize({
+				format: {
+					exponent: 0
+				}
+			})
+		]
+	}).then(bundle =>
+		bundle.write({
+			format: 'iife',
+			moduleName: globalVarName,
+			dest: minName,
+			banner
+		})
+	).catch(console.error);
+}
+
 console.log('•', cjsName);
 console.log('•', esName);
 rollup({
@@ -46,38 +89,4 @@ rollup({
 		dest: esName,
 		banner
 	})
-])).catch(err => console.log(err));
-if (globalVarName) {
-	console.log('•', iifeName);
-	rollup({
-		entry: 'index.js',
-		plugins: [
-			buble(),
-			requireExternals({
-				browser: true,
-				jsnext: true
-			}),
-			uglify(isByteCountingOnly ? {} : {
-				output: {
-					comments: (node, comment) => {
-						if (comment.type === 'comment2') {
-							return comment.value[0] === '!';
-						}
-					}
-				}
-			}),
-			filesize({
-				format: {
-					exponent: 0
-				}
-			})
-		]
-	}).then(bundle =>
-		bundle.write({
-			format: 'iife',
-			moduleName: globalVarName,
-			dest: iifeName,
-			banner
-		})
-	).catch(err => console.log(err));
-}
+])).catch(console.error);
