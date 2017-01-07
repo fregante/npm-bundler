@@ -6,6 +6,9 @@
   "repository": "bfred-it/npm-bundler",
   "author": "Federico Brigante <bfred-it@users.noreply.github.com> (twitter.com/bfred_it)",
   "bin": "index.js",
+  "scripts": {
+    "test": "xo"
+  },
   "files": [
     "index.js"
   ],
@@ -19,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/bfred-it/npm-bundler/issues"
   },
-  "homepage": "https://github.com/bfred-it/npm-bundler#readme"
+  "homepage": "https://github.com/bfred-it/npm-bundler#readme",
+  "devDependencies": {
+    "xo": "^0.17.1"
+  }
 }
