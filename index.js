@@ -36,24 +36,26 @@ const preserveBanner = isByteCountingOnly ? {} : {
 
 console.log('Building:');
 if (globalVarName) {
-	console.log('•', iifeName);
-	rollup({
-		entry: 'index.js',
-		plugins: [
-			buble(),
-			requireExternals({
-				browser: true,
-				jsnext: true
+	if (!isByteCountingOnly) {
+		console.log('•', iifeName);
+		rollup({
+			entry: 'index.js',
+			plugins: [
+				buble(),
+				requireExternals({
+					browser: true,
+					jsnext: true
+				})
+			]
+		}).then(bundle =>
+			bundle.write({
+				format: 'iife',
+				moduleName: globalVarName,
+				dest: iifeName,
+				banner
 			})
-		]
-	}).then(bundle =>
-		bundle.write({
-			format: 'iife',
-			moduleName: globalVarName,
-			dest: iifeName,
-			banner
-		})
-	).catch(console.error);
+		).catch(console.error);
+	}
 
 	console.log('•', minName);
 	rollup({
