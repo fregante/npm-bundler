@@ -6,14 +6,16 @@ It's for my own modules, but maybe you can find it useful too. It changes often 
 
 It outputs the following files:
 
-* **dist/[lib-name].browser.js**  
-	A minified file for the browser with a global called `[libName]`
+* **dist/[lib-name].js**  
+	A file for the browser with a global called `[libName]`
+* **dist/[lib-name].min.js**  
+	The same file as above, but minified with UglifyJS 2
 * **dist/[lib-name].common-js.js**  
 	A file to be used with browserify or similar. Set it up with:  
 	`"main": "dist/[lib-name].common-js.js",` in package.json
 * **dist/[lib-name].es-modules.js**  
 	A file to be used with ESM-aware bundlers like rollup. Set it up with:  
-	`"jsnext:main": "dist/[lib-name].es-modules.js",` in package.json
+	`"module": "dist/[lib-name].es-modules.js",` in package.json
 
 ## Usage
 
@@ -45,7 +47,7 @@ If your lib only makes sense inside node/browserify, you can skip the `browser` 
 
 ## Byte-counting
 
-The `browser` file is useful to be used for byte-counting via [`gzip-size-cli`](https://github.com/sindresorhus/gzip-size-cli) or with [badges.](https://github.com/exogen/badge-matrix#file-size-badges-for-any-file-on-github-or-npm) If your package is _node-only,_ you can pass the option `--byte-count` and a **dist/[lib-name].byte-count.js** file will be created.
+The `browser` file is useful to be used for byte-counting via [`gzip-size-cli`](https://github.com/sindresorhus/gzip-size-cli) or with [badges.](https://github.com/exogen/badge-matrix#file-size-badges-for-any-file-on-github-or-npm) If your package is _node-only,_ you can pass the option `--byte-count` and a **dist/[lib-name].size-measuring-only.js** file will be created.
 
 ## Alternatives
 
