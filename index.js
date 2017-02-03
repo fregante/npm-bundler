@@ -8,7 +8,7 @@ const filesize = require('rollup-plugin-filesize');
 const readPkg = require('read-pkg').sync;
 
 const packageInfo = readPkg();
-const banner = `/*! npm.im/${packageInfo.name} */`;
+const banner = `/*! npm.im/${packageInfo.name} ${packageInfo.version} */`;
 
 const outputFilename = process.argv[2];
 let globalVarName = process.argv[3];
