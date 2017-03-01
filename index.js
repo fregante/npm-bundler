@@ -3,7 +3,8 @@
 const rollup = require('rollup').rollup;
 const buble = require('rollup-plugin-buble');
 const uglify = require('rollup-plugin-uglify');
-const requireExternals = require('rollup-plugin-node-resolve');
+const nodeResolve = require('rollup-plugin-node-resolve');
+const commonJs = require('rollup-plugin-commonjs');
 const filesize = require('rollup-plugin-filesize');
 const readPkg = require('read-pkg').sync;
 
@@ -42,10 +43,11 @@ if (globalVarName) {
 			entry: 'index.js',
 			plugins: [
 				buble(),
-				requireExternals({
+				nodeResolve({
 					browser: true,
 					jsnext: true
-				})
+				}),
+				commonJs()
 			]
 		}).then(bundle =>
 			bundle.write({
@@ -62,10 +64,11 @@ if (globalVarName) {
 		entry: 'index.js',
 		plugins: [
 			buble(),
-			requireExternals({
+			nodeResolve({
 				browser: true,
 				jsnext: true
 			}),
+			commonJs(),
 			uglify(preserveBanner),
 			filesize({
 				format: {
