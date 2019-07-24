@@ -2,16 +2,16 @@
   "name": "bfred-npm-bundler",
   "version": "8.1.0",
   "description": "Opinionated ES6 library bundler based on rollup and buble",
+  "repository": "fregante/npm-bundler",
   "license": "MIT",
-  "repository": "bfred-it/npm-bundler",
-  "author": "Federico Brigante <github@bfred.it> (bfred.it)",
+  "author": "Federico Brigante <opensource@bfred.it> (bfred.it)",
+  "files": [
+    "index.js"
+  ],
   "bin": "index.js",
   "scripts": {
     "test": "xo"
   },
-  "files": [
-    "index.js"
-  ],
   "dependencies": {
     "read-pkg": "^2.0.0",
     "rollup": "^0.41.1",
@@ -21,10 +21,6 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1"
   },
-  "bugs": {
-    "url": "https://github.com/bfred-it/npm-bundler/issues"
-  },
-  "homepage": "https://github.com/bfred-it/npm-bundler#readme",
   "devDependencies": {
     "xo": "^0.17.1"
   }

@@ -1,4 +1,4 @@
-# bfred-npm-bundler 
+# bfred-npm-bundler
 
 > Opinionated ES6 library bundler based on [rollup](https://github.com/rollup/rollup) and [buble](https://gitlab.com/Rich-Harris/buble)
 
@@ -6,15 +6,15 @@ It's for my own modules, but maybe you can find it useful too. It changes often 
 
 It outputs the following files:
 
-* **dist/[lib-name].js**  
+* **dist/[lib-name].js**
 	A file for the browser with a global called `[libName]`
-* **dist/[lib-name].min.js**  
+* **dist/[lib-name].min.js**
 	The same file as above, but minified with UglifyJS 2
-* **dist/[lib-name].common-js.js**  
-	A file to be used with browserify or similar. Set it up with:  
+* **dist/[lib-name].common-js.js**
+	A file to be used with browserify or similar. Set it up with:
 	`"main": "dist/[lib-name].common-js.js",` in package.json
-* **dist/[lib-name].es-modules.js**  
-	A file to be used with ESM-aware bundlers like rollup. Set it up with:  
+* **dist/[lib-name].es-modules.js**
+	A file to be used with ESM-aware bundlers like rollup. Set it up with:
 	`"module": "dist/[lib-name].es-modules.js",` in package.json
 
 ## Usage
@@ -22,7 +22,7 @@ It outputs the following files:
 Install it in your project:
 
 ```sh
-npm install --save-dev bfred-npm-bundler 
+npm install --save-dev bfred-npm-bundler
 ```
 
 Add the references to the generated files and the build step in your `package.json`:
@@ -55,4 +55,4 @@ The `browser` file is useful to be used for byte-counting via [`gzip-size-cli`](
 
 ## License
 
-MIT © [Federico Brigante](http://twitter.com/bfred_it)
+MIT © [Federico Brigante](https://bfred.it)
